@@ -19,11 +19,4 @@ width = total_width / n
 axes.bar(x-width/2, a,  width=width, label='男性')
 axes.bar(x+width/2, b,  width=width, label='女性')
 axes.legend(prop=font)
-fig.savefig("./群体报告生成中间数据/群体性别占比.png",dpi=300,bbox_inches="tight")
-
-# 添加标题
-elements.append(Paragraph("""<para><font face="msyh">"""+"毒品群体性别占比"+"""</font></para>""",style["h2"]))
-# 添加图片
-img = Image("./群体报告生成中间数据/"+"群体性别占比.png",6*inch,3*inch)
-elements.append(img)
-elements.append(Spacer(1,0.2*inch))
+fig.savefig("./PATH.png",dpi=300,bbox_inches="tight")
