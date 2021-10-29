@@ -1,0 +1,29 @@
+fig = plt.figure(figsize=(10,6))
+axes = fig.add_subplot(111)
+axes.set_xlabel("毒品类型",font = font, fontsize=14)
+axes.set_ylabel("性别比例",font = font, fontsize=14)
+axes.set_xticks([i for i in range(1,2*(len(drug_types)),2)])
+axes.set_xlim([0,12])
+tmp_drug_types = [item for item in drug_types]
+axes.set_xticklabels(tmp_drug_types, font=font)
+x = np.array(list(range(1,2*len(drug_types),2)))
+a = list(drug_table["性别_男性"])
+b = list(drug_table["性别_女性"])
+for i in range(len(a)):
+    total = a[i]+b[i]
+    a[i] = a[i]/total
+    b[i] = b[i]/total
+total_width = 1.4
+n = 2
+width = total_width / n
+axes.bar(x-width/2, a,  width=width, label='男性')
+axes.bar(x+width/2, b,  width=width, label='女性')
+axes.legend(prop=font)
+fig.savefig("./群体报告生成中间数据/群体性别占比.png",dpi=300,bbox_inches="tight")
+
+# 添加标题
+elements.append(Paragraph("""<para><font face="msyh">"""+"毒品群体性别占比"+"""</font></para>""",style["h2"]))
+# 添加图片
+img = Image("./群体报告生成中间数据/"+"群体性别占比.png",6*inch,3*inch)
+elements.append(img)
+elements.append(Spacer(1,0.2*inch))
